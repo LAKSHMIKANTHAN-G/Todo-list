@@ -7,4 +7,4 @@ What I learned
 - how to use event delegation 
 - how to use the nullish coalescing operator on form submits
 
-[Live Demo](https://chaandharaghav.github.io/todo-list/) :point_left:
+[Live Demo](https://lakshmikanthan-g.github.io/Todo-list/#) :point_left:
