@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Todo List</title>
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="styles.css" />
+
+    <!-- Fontawesome icons -->
+    <script
+      defer
+      src="../node_modules/@fortawesome/fontawesome-free/js/all.js"
+    ></script>
+  </head>
+  <body>
+    <!-- Navbar begins here -->
+
+    <nav
+      class="navbar is-fixed-top"
+      role="navigation"
+      aria-label="main navigation"
+    >
+      <div class="navbar-brand my-3">
+        <a class="navbar-item is-size-2" href="#">
+          <span class="icon">
+            <i class="fas fa-check-double"></i>
+          </span>
+          <h1 class="ml-4">Todo List</h1>
+        </a>
+
+        <a
+          role="button"
+          class="navbar-burger"
+          aria-label="menu"
+          aria-expanded="false"
+        >
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+    </nav>
+
+    <!-- Sidebar begins here -->
+    <div class="columns is-hidden-mobile" id="sidebar">
+      <div class="column">
+        <aside class="menu">
+          <p class="menu-label">General</p>
+          <ul class="menu-list">
+            <li><a class="is-active">Home</a></li>
+            <li><a>Week</a></li>
+          </ul>
+          <p class="menu-label">Projects</p>
+          <ul class="menu-list" id="projects"></ul>
+          <button class="button" id="addProjectBtn">+</button>
+        </aside>
+      </div>
+    </div>
+
+    <!-- Template for modal -->
+    <template id="modalTemplate">
+      <div class="modal is-active" id="modal">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+          <header class="modal-card-head">
+            <p class="modal-card-title">Add task</p>
+            <button class="delete modalCancel" aria-label="close"></button>
+          </header>
+          <section class="modal-card-body">
+            <form action="">
+              <div class="field" id="title">
+                <label class="label">Title</label>
+                <div class="control">
+                  <input
+                    class="input"
+                    type="text"
+                    placeholder="Task title"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="label">Description</label>
+                <div class="control">
+                  <textarea
+                    class="textarea"
+                    placeholder="Detailed info about the task"
+                  ></textarea>
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="label">Scheduled time</label>
+                <div class="control">
+                  <input type="date" />
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="label">Priority</label>
+                <div class="control">
+                  <div class="select">
+                    <select>
+                      <option selected disabled value="">
+                        Choose priority
+                      </option>
+                      <option value="low">Low</option>
+                      <option value="medium">Medium</option>
+                      <option value="high">High</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="field">
+                <div class="control">
+                  <label class="checkbox">
+                    <input type="checkbox" />
+                    Completed
+                  </label>
+                </div>
+              </div>
+
+              <div class="field is-grouped">
+                <div class="control">
+                  <button class="button is-link" id="modalAddTask">Add</button>
+                </div>
+                <div class="control">
+                  <button
+                    class="button is-link is-light modalCancel"
+                    type="button"
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </div>
+            </form>
+          </section>
+        </div>
+      </div>
+    </template>
+
+    <!-- template for project -->
+    <template id="projectModalTemplate">
+      <div class="modal is-active" id="projectModal">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+          <header class="modal-card-head">
+            <p class="modal-card-title">Add project</p>
+            <button
+              class="delete projectModalCancel"
+              aria-label="close"
+            ></button>
+          </header>
+          <section class="modal-card-body">
+            <form action="">
+              <div class="field" id="title">
+                <label class="label">Title</label>
+                <div class="control">
+                  <input
+                    class="input"
+                    type="text"
+                    placeholder="Project title"
+                    required
+                  />
+                </div>
+                <p class="help is-danger is-hidden">This email is invalid</p>
+              </div>
+
+              <div class="field is-grouped">
+                <div class="control">
+                  <button class="button is-link" id="modalAddProject">
+                    Add
+                  </button>
+                </div>
+                <div class="control">
+                  <button
+                    class="button is-link is-light projectModalCancel"
+                    type="button"
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </div>
+            </form>
+          </section>
+        </div>
+      </div>
+    </template>
+
+    <!-- Main content begins here -->
+    <div class="columns is-mobile" id="mainContent">
+      <div class="column px-6">
+        <h3 class="has-text-weight-semibold is-size-3" id="current-group">
+          All tasks
+        </h3>
+        <ul id="taskList">
+          <li>
+            Task1 Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Reiciendis asperiores aut corrupti alias molestiae praesentium nobis
+            porro architecto optio. Ullam aperiam quisquam beatae impedit
+            blanditiis deleniti repudiandae repellendus similique
+            exercitationem.
+          </li>
+          <li>Task2</li>
+          <li>Task3</li>
+          <li>Task4</li>
+          <li>Task5</li>
+        </ul>
+      </div>
+    </div>
+
+    <script src="bundle.js"></script>
+  </body>
+</html>

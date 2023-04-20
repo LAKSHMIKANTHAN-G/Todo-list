@@ -1,0 +1,94 @@
+@charset "utf-8";
+@import "~bulma/bulma";
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  padding-top: 100px;
+
+  max-width: 100vw;
+}
+
+#sidebar {
+  height: 100%;
+  width: 320px;
+  position: fixed;
+  background-color: hsl(0, 0%, 95%);
+  z-index: 5;
+
+  padding: 1rem;
+}
+
+#sidebar .delSpan {
+  float: left;
+}
+
+// Task item styles
+
+.taskItem,
+.expandDiv {
+  max-width: 90%;
+}
+
+.taskItem {
+  background-color: #4862c7;
+  color: aliceblue;
+
+  padding: 1rem 2rem;
+
+  display: flex;
+
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.infoSpan {
+  width: 100%;
+}
+
+.menu-list a {
+  display: flex;
+}
+
+// Contents of taskItem styles
+
+.expandDiv {
+  background-color: rgb(73, 89, 102);
+  color: aliceblue;
+}
+
+.expandDiv * {
+  margin-bottom: 2rem;
+}
+.expandDiv *:last-of-type {
+  margin-bottom: 0;
+}
+
+.offset {
+  position: absolute;
+  left: 320px;
+}
+
+@media (min-width: 767px) {
+  .taskItem,
+  .expandDiv {
+    min-width: 340px;
+  }
+}
+@media (min-width: 1023px) {
+  #mainContent {
+    position: absolute;
+    left: 320px;
+  }
+
+  .taskItem,
+  .expandDiv {
+    min-width: 550px;
+  }
+
+  .delTaskIcon:hover {
+    color: rgb(194, 194, 194);
+  }
+}
